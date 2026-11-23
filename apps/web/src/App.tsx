@@ -7,6 +7,15 @@ import VerifyEmailPage from "./pages/VerifyEmailPage";
 import DashboardPage from "./pages/DashboardPage";
 import SettingsPage from "./pages/SettingsPage";
 import PublicProfilePage from "./pages/PublicProfilePage";
+import DiscoveryPage from "./pages/DiscoveryPage";
+import CommunityCreatePage from "./pages/CommunityCreatePage";
+import CatalogPage from "./pages/CatalogPage";
+import PremiumPage from "./pages/PremiumPage";
+import EventsPage from "./pages/EventsPage";
+import TournamentsPage from "./pages/TournamentsPage";
+import NotificationsPage from "./pages/NotificationsPage";
+import AdminPage from "./pages/AdminPage";
+import CommunityDetailPage from "./pages/CommunityDetailPage";
 
 const navItems = ["Discover", "Games", "Communities", "Tournaments", "Events", "Leaderboards", "Premium", "About"];
 
@@ -82,9 +91,16 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        {navItems.map((item) => (
-          <Route key={item} path={`/${item.toLowerCase()}`} element={<Placeholder title={item} />} />
-        ))}
+        <Route path="/discover" element={<DiscoveryPage />} />
+        <Route path="/communities" element={<DiscoveryPage />} />
+        <Route path="/communities/:slug" element={<CommunityDetailPage />} />
+        <Route path="/games" element={<CatalogPage kind="games" />} />
+        <Route path="/categories" element={<CatalogPage kind="categories" />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/tournaments" element={<TournamentsPage />} />
+        <Route path="/premium" element={<PremiumPage />} />
+        <Route path="/leaderboards" element={<Placeholder title="Leaderboards" />} />
+        <Route path="/about" element={<Placeholder title="About GuildPH" />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/verify-email" element={<VerifyEmailPage />} />
@@ -93,8 +109,11 @@ export default function App() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/profile" element={<SettingsPage />} />
           <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/notifications" element={<NotificationsPage />} />
+          <Route path="/communities/new" element={<CommunityCreatePage />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/owner" element={<AdminPage owner />} />
         </Route>
-        <Route path="/communities/new" element={<Placeholder title="Create a Community" />} />
         <Route path="*" element={<Placeholder title="Page not found" />} />
       </Routes>
     </div>
