@@ -14,6 +14,9 @@ export async function apiRequest<T>(
     }
   });
   const body = await response.json().catch(() => null);
+  if (!body || typeof body !== "object") {
+    throw new Error("The API is unavailable. Connect the Netlify function and database environment variables.");
+  }
   if (!response.ok) {
     const error = body?.error;
     throw new Error(error?.message ?? "The request could not be completed.");

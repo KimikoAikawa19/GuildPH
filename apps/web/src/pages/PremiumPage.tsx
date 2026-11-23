@@ -7,7 +7,7 @@ export default function PremiumPage() {
   const [plans, setPlans] = useState<any[]>([]);
   const [error, setError] = useState("");
   useEffect(() => {
-    apiRequest<any[]>("/plans", undefined).then(setPlans).catch((reason) => setError(reason.message));
+    apiRequest<any[]>("/plans", undefined).then((data) => setPlans(Array.isArray(data) ? data : [])).catch((reason) => setError(reason.message));
   }, []);
 
   async function checkout() {
