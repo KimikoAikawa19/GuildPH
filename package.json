@@ -1,0 +1,14 @@
+{
+  "name": "guildph",
+  "private": true,
+  "workspaces": ["apps/web", "apps/api", "packages/shared"],
+  "scripts": {
+    "dev": "npm run dev --workspace @guildph/web",
+    "dev:web": "npm run dev --workspace @guildph/web",
+    "dev:api": "npx netlify dev",
+    "build": "npm run build --workspace @guildph/web",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "engines": { "node": ">=20" }
+}
